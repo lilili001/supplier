@@ -24,14 +24,14 @@
             </select>
         </div>
     </div>
-
+    <?php $return = $supplier->support_return ;?>
     <div class="form-group {{ $errors->has("support_return") ? ' has-error' : '' }}" >
        <label class="col-sm-2"  for="">{{trans('supplier::suppliers.form.support return')}}</label>
         <div class="col-sm-10">
             <select class="form-control" name="support_return" value="{{$supplier->support_return}}">
                 <option value="">请选择</option>
                 <option value="1" {{$supplier->support_return ? 'selected' : '' }}>{{trans('supplier::suppliers.form.support')}}</option>
-                <option value="0" {{!$supplier->support_return ? 'selected' : '' }} >{{trans('supplier::suppliers.form.not support')}}</option>
+                <option value="0" {{ isset($return) && $return == 0 ? 'selected' : '' }} >{{trans('supplier::suppliers.form.not support')}}</option>
             </select>
             {!! $errors->first("support_return", '<span class="help-block">:message</span>') !!}
         </div>

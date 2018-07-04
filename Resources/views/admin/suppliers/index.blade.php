@@ -52,7 +52,7 @@
                                 <td>{{$supplier->supplier_name}}</td>
                                 <td>{{$supplier->url}}</td>
                                 <td>{{$supplier->support_foreign_ship ? '是' : '否' }}</td>
-                                <td>{{$supplier->support_return}}</td>
+                                <td>{{ isset($supplier->support_return) && $supplier->support_return ==1 ? '是' : '否' }}</td>
                                 <td>{{$supplier->return_days}}</td>
                                 <td>{{$supplier->cat}}</td>
                                 <td>
