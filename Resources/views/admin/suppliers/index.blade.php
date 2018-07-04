@@ -32,12 +32,12 @@
                             <tr>
                                 <th><input type="checkbox" class="icheckbox_minimal" id="all_checked"></th>
                                 <th>序号</th>
-                                <th>供应商名称</th>
-                                <th>供应商店铺url</th>
-                                <th>是否支持海外发货</th>
-                                <th>是否退换货</th>
-                                <th>退换时间</th>
-                                <th>供应产品</th>
+                                <th>{{trans('supplier::suppliers.form.supplier name')}}</th>
+                                <th>{{trans('supplier::suppliers.form.url')}}</th>
+                                <th>{{trans('supplier::suppliers.form.support foreign shipping')}}</th>
+                                <th>{{trans('supplier::suppliers.form.support return')}}</th>
+                                <th>{{trans('supplier::suppliers.form.return days')}}</th>
+                                <th>{{trans('supplier::suppliers.form.cat')}}</th>
 
                                 <th>{{ trans('core::core.table.created at') }}</th>
                                 <th data-sortable="false">{{ trans('core::core.table.actions') }}</th>
@@ -62,8 +62,8 @@
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('admin.supplier.supplier.edit', [$supplier->id]) }}" class="btn btn-default btn-flat"><i class="fa fa-pencil"></i></a>
-                                        <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#modal-delete-confirmation" data-action-target="{{ route('admin.supplier.supplier.destroy', [$supplier->id]) }}"><i class="fa fa-trash"></i></button>
+                                        <a href="{{ route('admin.supplier.supplier.edit', [$supplier->id]) }}" >编辑</a>
+                                        <a data-toggle="modal" data-target="#modal-delete-confirmation" data-action-target="{{ route('admin.supplier.supplier.destroy', [$supplier->id]) }}">删除</a>
                                     </div>
                                 </td>
                             </tr>
@@ -86,6 +86,7 @@
     </div>
     @include('core::partials.delete-modal')
 @stop
+
 
 @section('footer')
     <a data-toggle="modal" data-target="#keyboardShortcutsModal"><i class="fa fa-keyboard-o"></i></a> &nbsp;
@@ -123,6 +124,7 @@
                 }
             });
 
+            //全选
             $("#all_checked").click(function(){
                 $('[name=row-check]:checkbox').prop('checked',this.checked);//checked为true时为默认显示的状态
             });
@@ -141,9 +143,9 @@
                 $('[name="row-check"]:checked').each(function(index,item){
                     checkedRows.push( $(item).parents('tr').data('id') )
                 })
-            })
+            });
 
-
+            //批量删除
             $('.bulk-delete').click(function(){
                 $.post( route('bulk.delete.suppliers'),{_token:'{{csrf_token()}}' , ids:checkedRows } ).then(function(res){
                     location.reload()

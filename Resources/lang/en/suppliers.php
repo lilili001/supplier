@@ -19,7 +19,9 @@ return [
         'supplier name' => 'Supplier Name',
         'url' => 'Url',
         'support foreign shipping' => 'Support Foreign Shipping',
-        'cat' => 'Cat'
+        'cat' => 'Cat',
+        'support return' => 'Support Return',
+        'return days' => 'Return Days'
     ],
     'messages' => [
     ],

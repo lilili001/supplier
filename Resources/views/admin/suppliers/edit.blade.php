@@ -12,7 +12,7 @@
 @stop
 
 @section('content')
-    {!! Form::open(['route' => ['admin.supplier.supplier.update', $supplier->id], 'method' => 'put']) !!}
+    {!! Form::open(['route' => ['admin.supplier.supplier.update', $supplier->id], 'method' => 'put', 'class'=>'form-horizontal' ]) !!}
     <div class="row">
         <div class="col-md-12">
             <div class="nav-tabs-custom">
